@@ -10,16 +10,13 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    
     @IBAction func pushEditAction(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.tableView.reloadData()
         }
-        //tableView.reloadData()
     }
-    
     
     
     @IBAction func pushAddAction(_ sender: Any) {
@@ -104,8 +101,6 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-
-    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -123,20 +118,15 @@ class TableViewController: UITableViewController {
         }    
     }
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if changeState(at: indexPath.row) {
-
             tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "check")
 
         } else {
             tableView.cellForRow(at: indexPath)?.imageView?.image = UIImage(named: "uncheck")
-
         }
-        
-        
     }
 
    
@@ -144,7 +134,6 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         moveItem(fromIndex: fromIndexPath.row, toIndex: to.row)
         tableView.reloadData()
-    
     }
 
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -153,10 +142,10 @@ class TableViewController: UITableViewController {
         } else {
             return .delete
         }
-   
     }
     
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        //new comment
         return false
     }
     
@@ -177,5 +166,4 @@ class TableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
